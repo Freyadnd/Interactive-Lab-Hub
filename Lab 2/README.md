@@ -265,6 +265,8 @@ You are permitted (but not required) to work in groups and share a turn in; you 
 
 I modified my clock from part a into a game which uses the accelerometer to control the horizontal direction (left and right) of the snow. Once there's a column all filled with snow, the game is over. The system measures how much time has elapsed during the game and prints it out. Now my clock is a little fun device that kills the time!
 
+Code: see Lab 2/clock_accel.py
+
 Thanks to Freya and Khiem who provided feedback on Thurday's lab!
 
 [Demo Video](https://drive.google.com/file/d/1_pvS9qRkFRsBnpuvZV5VMvfOlyoSlZ10/view?usp=sharing)
