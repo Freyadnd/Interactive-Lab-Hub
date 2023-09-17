@@ -1,6 +1,8 @@
 # Interactive Prototyping: The Clock of Pi
 **NAMES OF COLLABORATORS HERE**
 
+Sissel Sun (individual)
+
 Does it feel like time is moving strangely during this semester?
 
 For our first Pi project, we will pay homage to the [timekeeping devices of old](https://en.wikipedia.org/wiki/History_of_timekeeping_devices) by making simple clocks.
@@ -43,6 +45,8 @@ The new GitHub.com UI makes this step easy from the webbrowser:
 Prior to the lab session on Thursday, taken inventory of the kit parts that you have, and note anything that is missing:
 
 ***Update your [parts list inventory](partslist.md)***
+
+Nothing is missing.
 
 3. ### Prepare your Pi for lab this week
 [Follow these instructions](prep.md) to download and burn the image for your Raspberry Pi before lab Thursday.
@@ -196,8 +200,13 @@ Please sketch/diagram your clock idea. (Try using a [Verplank digram](http://www
 
 **We strongly discourage and will reject the results of literal digital or analog clock display.**
 
+![Sketch](sketches/1.png)
+
+The idea is a timer that display progress by snowing animation. The more snow is in the screen, more time has elapsed. When the snow fills up all the screen, time is up. Users can press any of the two buttons to restart the timer. People can use it to time a task without much distraction or track the time for cooking a meal. And it's more lovely than a digital or analog timer :) 
 
 \*\*\***A copy of your code should be in your Lab 2 Github repo.**\*\*\*
+
+See Lab 2/clock.py
 
 After you edit and work on the scripts for Lab 2, the files should be upload back to your own GitHub repo! You can push to your personal github repo by adding the files here, commiting and pushing.
 
@@ -215,8 +224,26 @@ After that, Git will ask you to login to your GitHub account to push the updates
 
 \*\*\***Take a video of your PiClock.**\*\*\*
 
+[Demo Video](https://drive.google.com/file/d/1Qp4U3y8N3wheavFESy0ipdJUzoJjtvMn/view?usp=sharing)
+
 ## Part G. 
 ## Sketch and brainstorm further interactions and features you would like for your clock for Part 2.
+
+Idea 1: Add feature to set time <br>
+Besides simply resetting the time, users are able to modify the time they want to count down by pressing the buttons (upper one for increasing and lower one for decreasing). In this case, starting or resetting the timer would be holding a button.<br>
+![Idea 1](sketches/2.jpg)
+
+Idea 2: Let snow fall based on gravity <br>
+This is an ambitious idea that uses an accelerometer to measure the orientation of pi in the real world and let the snow fall down following gravity. <br>
+![Idea 2](sketches/3.jpg)
+
+Idea 3: Customize background and foreground color <br>
+This idea allows users to customize or choose from a set of background and foreground colors. <br>
+![Idea 3](sketches/4.jpg)
+
+Idea 4: Different themes <br>
+Besides the snowing animation, there can be different themes that users can switch to (such as raining). <br>
+![Idea 4](sketches/5.jpg)
 
 
 # Prep for Part 2
