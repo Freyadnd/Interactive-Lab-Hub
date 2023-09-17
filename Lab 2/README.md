@@ -236,4 +236,8 @@ As always, make sure you document contributions and ideas from others explicitly
 
 You are permitted (but not required) to work in groups and share a turn in; you are expected to make equal contribution on any group work you do, and N people's group project should look like N times the work of a single person's lab. What each person did should be explicitly documented. Make sure the page for the group turn in is linked to your Interactive Lab Hub page. 
 
+I modified my clock from part a into a game which uses the accelerometer to control the horizontal direction (left and right) of the snow. Once there's a column all filled with snow, the game is over. The system measures how much time has elapsed during the game and prints it out. Now my clock is a little fun device that kills the time!
 
+Thanks to Freya and Khiem who provided feedback on Thurday's lab!
+
+[Demo Video](https://drive.google.com/file/d/1_pvS9qRkFRsBnpuvZV5VMvfOlyoSlZ10/view?usp=sharing)
