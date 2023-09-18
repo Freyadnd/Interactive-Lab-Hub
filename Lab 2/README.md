@@ -259,6 +259,8 @@ Besides the snowing animation, there can be different themes that users can swit
 
 2. Look at and give feedback on the Part G. for at least 2 other people in the class (and get 2 people to comment on your Part G!)
 
+Freya's feedback: I adore the cute snow animation. The small display nicely portrays a sense of escalating snowfall intensity by varying the falling speed of snowflakes at different heights. One small suggestion: it might look more natural if snowflakes could start falling at random positions in each line, and initiate a new line only after the current line is filled.
+
 # Lab 2 Part 2
 
 Pull Interactive Lab Hub updates to your repo.
