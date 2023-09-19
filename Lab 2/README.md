@@ -261,6 +261,8 @@ Besides the snowing animation, there can be different themes that users can swit
 
 Freya's feedback: I adore the cute snow animation. The small display nicely portrays a sense of escalating snowfall intensity by varying the falling speed of snowflakes at different heights. One small suggestion: it might look more natural if snowflakes could start falling at random positions in each line, and initiate a new line only after the current line is filled.
 
+Khiem's feedback: Sissel has the idea to count time by stacking objects one by one. I think this requires a great effort in drawing and animating objects in code. It is also quite different from many ideas I have seen in class. For her next iteration, I would suggest that she makes it interactive by incorporating the buttons on the minitft or the numberpad. One obvious example is to provide digital/analog time by pressing a button, but I think there are several other ideas.
+
 # Lab 2 Part 2
 
 Pull Interactive Lab Hub updates to your repo.
