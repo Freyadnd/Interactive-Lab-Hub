@@ -111,7 +111,7 @@ python test_microphone.py -m en
 ```
 
 \*\***Write your own shell file that verbally asks for a numerical based input (such as a phone number, zipcode, number of pets, etc) and records the answer the respondent provides.**\*\*
-
+See [numerical.sh](./speech-scripts/numerical.sh) and [numerical.py](./speech-scripts/numerical.py).
 
 ### Serving Pages
 

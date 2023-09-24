@@ -8,6 +8,8 @@ import argparse
 import queue
 import sys
 import sounddevice as sd
+import os
+import json
 
 from vosk import Model, KaldiRecognizer
 
@@ -50,6 +52,11 @@ parser.add_argument(
     "-m", "--model", type=str, help="language model; e.g. en-us, fr, nl; default is en-us")
 args = parser.parse_args(remaining)
 
+# Execute numerical.sh
+# os.system('./numerical.sh')
+
+result = ""
+
 try:
     if args.samplerate is None:
         device_info = sd.query_devices(args.device, "input")
@@ -76,14 +83,19 @@ try:
         while True:
             data = q.get()
             if rec.AcceptWaveform(data):
-                print(rec.Result())
+                temp = json.loads(rec.Result())["text"]
+                if temp != "":
+                    result = temp
             else:
-                print(rec.PartialResult())
+                temp = json.loads(rec.PartialResult())["partial"]
+                if temp != "":
+                    result = temp
+            print(result)
             if dump_fn is not None:
                 dump_fn.write(data)
 
 except KeyboardInterrupt:
-    print("\nDone")
+    print("\nWow " + result + " classes! That's great!")
     parser.exit(0)
 except Exception as e:
     parser.exit(type(e).__name__ + ": " + str(e))
