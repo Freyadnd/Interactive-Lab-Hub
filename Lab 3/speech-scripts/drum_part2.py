@@ -9,6 +9,7 @@ import queue
 import sys
 import json
 import time
+import keyboard
 import sounddevice as sd
 
 from vosk import Model, KaldiRecognizer
@@ -56,11 +57,13 @@ parser.add_argument(
 args = parser.parse_args(remaining)
 
 mp3_fp = BytesIO()
-tts = gTTS('Hello! I am a drum machine that can play hi hat, bass drum and snare drum sounds. ', lang='en')
+# tts = gTTS('Hello! I am a drum machine that can play hi hat, bass drum and snare drum sounds. ', lang='en')
+tts = gTTS('Hello!', lang='en')
 tts.save('hello.mp3')
 playsound('hello.mp3')
 
 tts = gTTS("Sorry, I don't recognize the instrument you are saying.", lang='en')
+# tts = gTTS("Sorry.", lang='en')
 tts.save('sorry.mp3')
 
 try:
@@ -87,21 +90,27 @@ try:
 
         rec = KaldiRecognizer(model, args.samplerate, '["bass", "snare", "drum", "hi", "hat", "[unk]"]')
         last_sorry_playback_time = 0
+
+        sound_name = ""
         while True:
             data = q.get()
             clear = False
             if rec.AcceptWaveform(data):
                 result = json.loads(rec.Result())["text"]
                 if (result.find("hi hat") != -1):
-                    print("Now playing hi hat.")
-                    playsound("short-open-hi-hat.wav")
+                    print("Switching to hi hat.")
+                    sound_name = "short-open-hi-hat.wav"
+                    # playsound("short-open-hi-hat.wav")
                 elif (result.find("snare drum") != -1): 
-                    print("Now playing snare drum.")
-                    playsound("wide-snare-drum_B_minor.wav")
+                    print("Switching to snare drum.")
+                    sound_name = "wide-snare-drum_B_minor.wav"
+                    # playsound("wide-snare-drum_B_minor.wav")
                 elif (result.find("bass drum") != -1):
-                    print("Now playing bass drum.")
-                    playsound("bass-drum-hit.wav")
+                    print("Switching to bass drum.")
+                    sound_name = "bass-drum-hit.wav"
+                    # playsound("bass-drum-hit.wav")
                 else:
+                    sound_name = ""
                     current_time = time.time()
                     if current_time - last_sorry_playback_time > 10:
                         playsound('sorry.mp3', True)
@@ -111,6 +120,9 @@ try:
                 pass
                 # print(rec.PartialResult())
             
+            if sound_name != "" and keyboard.is_pressed(' '):
+                playsound(sound_name, False)
+
             if dump_fn is not None:
                 dump_fn.write(data)
             # time.sleep(1)

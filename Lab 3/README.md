@@ -152,6 +152,15 @@ In the [demo directory](./demo), you will find an example Wizard of Oz project. 
 
 \*\***Describe if the dialogue seemed different than what you imagined, or when acted out, when it was wizarded, and how.**\*\*
 
+keyword recognition - add custom word list
+  before - low matching accuracy because of no context
+  now - rec = KaldiRecognizer(model, args.samplerate, '["bass", "snare", "drum", "hi", "hat", "[unk]"]')
+    (pass custom word list as argument - filtered out unrelated words)
+    similar pronouciation words -> mapped to our keyword instead -> increase accuracy
+robust system - detect substring in the answer instead of matching directly
+  before - noise along with target word 
+  now - take substring
+
 # Lab 3 Part 2
 
 For Part 2, you will redesign the interaction with the speech-enabled device using the data collected, as well as feedback from part 1.
