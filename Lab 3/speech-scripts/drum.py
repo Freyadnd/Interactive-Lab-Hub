@@ -15,7 +15,7 @@ from vosk import Model, KaldiRecognizer
 from gtts import gTTS
 from io import BytesIO
 from pydub import AudioSegment
-from pydub.playback import _play_with_simpleaudio
+from pydub.playback import _play_with_simpleaudio, play
 
 q = queue.Queue()
 
@@ -74,7 +74,7 @@ sounds = {
     'sorry': AudioSegment.from_file('sorry.mp3')
 }
 
-_play_with_simpleaudio(sounds['hello'])
+play(sounds['hello'])
 
 try:
     if args.samplerate is None:
