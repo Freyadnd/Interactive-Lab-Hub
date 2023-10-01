@@ -88,10 +88,15 @@ try:
         print("Press Ctrl+C to stop the recording")
         print("#" * 80)
 
-        rec = KaldiRecognizer(model, args.samplerate, '["bass", "snare", "drum", "hi", "hat", "[unk]"]')
+        rec = KaldiRecognizer(model, args.samplerate, '["bass", "snare", "drum", "hi", "hat", "start", "[unk]"]')
         last_sorry_playback_time = 0
 
         sound_name = ""
+        recording = False
+        playback = False
+        start_time = 0
+        time_list = []
+
         while True:
             data = q.get()
             clear = False
@@ -109,8 +114,11 @@ try:
                     print("Switching to bass drum.")
                     sound_name = "bass-drum-hit.wav"
                     # playsound("bass-drum-hit.wav")
-                else:
-                    sound_name = ""
+                elif (result.find("start") != -1):
+                    recording = True
+                    start_time = time.time()
+                elif sound_name == "":
+                    # sound_name = ""
                     current_time = time.time()
                     if current_time - last_sorry_playback_time > 10:
                         playsound('sorry.mp3', True)
@@ -119,8 +127,22 @@ try:
             else:
                 pass
                 # print(rec.PartialResult())
-            
-            if sound_name != "" and keyboard.is_pressed(' '):
+            if playback:
+                i = 0
+                print("start playback")
+                while(time.time() - playback_time < 4):
+                    if (time.time() - playback_time >= time_list[i][0]):
+                        playsound(time_list[i][1], False)
+                        i = i + 1
+                playback = False
+            elif sound_name != "" and keyboard.is_pressed(' '):
+                if recording and time.time() - start_time < 4:
+                    time_list.append((time.time() - start_time, sound_name))
+                elif recording:
+                    # play back
+                    recording = False
+                    playback = True
+                    playback_time = time.time()
                 playsound(sound_name, False)
 
             if dump_fn is not None:
