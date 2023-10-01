@@ -62,8 +62,8 @@ tts = gTTS('Hello!', lang='en')
 tts.save('hello.mp3')
 playsound('hello.mp3')
 
-tts = gTTS("Sorry, I don't recognize the instrument you are saying.", lang='en')
-# tts = gTTS("Sorry.", lang='en')
+# tts = gTTS("Sorry, I don't recognize the instrument you are saying.", lang='en')
+tts = gTTS("Sorry.", lang='en')
 tts.save('sorry.mp3')
 
 try:
