@@ -66,9 +66,9 @@ parser.add_argument(
 args = parser.parse_args(remaining)
 
 mp3_fp = BytesIO()
-# tts = gTTS('Hello! I am a drum machine that can play hi hat, bass drum and snare drum sounds. ', lang='en')
+tts = gTTS('Hello! I am a drum machine that can play hi hat, bass drum and snare drum sounds. If you say start, I can record your beats and repeat them. Say clear to stop the recording.', lang='en')
 # tts = gTTS('Hello!', lang='en')
-# tts.save('hello.wav')
+tts.save('hello.mp3')
 
 # tts = gTTS("Sorry, I don't recognize the instrument you are saying.", lang='en')
 # tts = gTTS("Sorry.", lang='en')
@@ -80,19 +80,19 @@ sounds = {
     'hi-hat': AudioSegment.from_file('short-open-hi-hat.wav'),
     'snare-drum': AudioSegment.from_file('wide-snare-drum_B_minor.wav'),
     'bass-drum': AudioSegment.from_file('bass-drum-hit.wav'),
-    # 'hello': AudioSegment.from_file('hello.wav'),
-    # 'sorry': AudioSegment.from_file('sorry.wav')
+    'hello': AudioSegment.from_file('hello.mp3'),
+    'sorry': AudioSegment.from_file('sorry.mp3')
 }
 
 # playsound("hello.mp3")
-# _play_with_simpleaudio(sounds['hello'])
+_play_with_simpleaudio(sounds['hello'])
 
 try:
     if args.samplerate is None:
         device_info = sd.query_devices(args.device, "input")
         # soundfile expects an int, sounddevice provides a float:
         args.samplerate = int(device_info["default_samplerate"])
-        
+
     if args.model is None:
         model = Model(lang="en-us")
     else:
@@ -128,7 +128,7 @@ try:
                     print("Switching to hi hat.")
                     sound_name = "hi-hat"
                     # playsound("short-open-hi-hat.wav")
-                elif (result.find("snare drum") != -1): 
+                elif (result.find("snare drum") != -1):
                     print("Switching to snare drum.")
                     sound_name = "snare-drum"
                     # playsound("wide-snare-drum_B_minor.wav")
@@ -169,7 +169,7 @@ try:
                 playback = True
                 playback_time = time.time()
                 print("start playback")
-                    
+
             if sound_name != "" and mpr121[2].value:
                 if recording and time.time() - start_time < 4:
                     time_list.append((time.time() - start_time, sound_name))
@@ -181,7 +181,7 @@ try:
                 else:
                     _play_with_simpleaudio(sounds[sound_name])
                     # playsound(sound_name, False)
-                    
+
 
 
             if dump_fn is not None:
