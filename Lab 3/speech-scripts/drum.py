@@ -12,9 +12,10 @@ import time
 import sounddevice as sd
 
 from vosk import Model, KaldiRecognizer
-from playsound import playsound
 from gtts import gTTS
 from io import BytesIO
+from pydub import AudioSegment
+from pydub.playback import _play_with_simpleaudio
 
 q = queue.Queue()
 
@@ -58,10 +59,22 @@ args = parser.parse_args(remaining)
 mp3_fp = BytesIO()
 tts = gTTS('Hello! I am a drum machine that can play hi hat, bass drum and snare drum sounds. ', lang='en')
 tts.save('hello.mp3')
-playsound('hello.mp3')
+
 
 tts = gTTS("Sorry, I don't recognize the instrument you are saying.", lang='en')
 tts.save('sorry.mp3')
+
+##################################
+# SOUNDS
+sounds = {
+    'hi-hat': AudioSegment.from_file('short-open-hi-hat.wav'),
+    'snare-drum': AudioSegment.from_file('wide-snare-drum_B_minor.wav'),
+    'bass-drum': AudioSegment.from_file('bass-drum-hit.wav'),
+    'hello': AudioSegment.from_file('.\Lab 3\speech-scripts\hello.mp3'),
+    'sorry': AudioSegment.from_file('.\Lab 3\speech-scripts\sorry.mp3')
+}
+
+_play_with_simpleaudio(sounds['hello'])
 
 try:
     if args.samplerate is None:
@@ -94,18 +107,23 @@ try:
                 result = json.loads(rec.Result())["text"]
                 if (result.find("hi hat") != -1):
                     print("Now playing hi hat.")
-                    playsound("short-open-hi-hat.wav")
+                    # playsound("short-open-hi-hat.wav")
+                    _play_with_simpleaudio(sounds["hi-hat"])
                 elif (result.find("snare drum") != -1): 
                     print("Now playing snare drum.")
-                    playsound("wide-snare-drum_B_minor.wav")
+                    # playsound("wide-snare-drum_B_minor.wav")
+                    _play_with_simpleaudio(sounds["snare-drum"])
                 elif (result.find("bass drum") != -1):
                     print("Now playing bass drum.")
-                    playsound("bass-drum-hit.wav")
+                    # playsound("bass-drum-hit.wav")
+                    _play_with_simpleaudio(sounds["bass-drum"])
                 else:
-                    current_time = time.time()
-                    if current_time - last_sorry_playback_time > 10:
-                        playsound('sorry.mp3', True)
-                    last_sorry_playback_time = current_time
+                    pass
+                    # current_time = time.time()
+                    # if current_time - last_sorry_playback_time > 10:
+                    #     # playsound('sorry.mp3', True)
+                    #     _play_with_simpleaudio(sounds["snare-drum"])
+                    # last_sorry_playback_time = current_time
                 print(result)
             else:
                 pass
