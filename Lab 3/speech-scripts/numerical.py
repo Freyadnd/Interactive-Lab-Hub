@@ -53,7 +53,7 @@ parser.add_argument(
 args = parser.parse_args(remaining)
 
 # Execute numerical.sh
-# os.system('./numerical.sh')
+os.system('./numerical.sh')
 
 result = ""
 

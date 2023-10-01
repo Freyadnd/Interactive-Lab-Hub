@@ -92,13 +92,13 @@ try:
             clear = False
             if rec.AcceptWaveform(data):
                 result = json.loads(rec.Result())["text"]
-                if (result == "hi hat"):
+                if (result.find("hi hat") != -1):
                     print("Now playing hi hat.")
                     playsound("short-open-hi-hat.wav")
-                elif (result == "snare drum"): 
+                elif (result.find("snare drum") != -1): 
                     print("Now playing snare drum.")
                     playsound("wide-snare-drum_B_minor.wav")
-                elif (result == "bass drum"):
+                elif (result.find("bass drum") != -1):
                     print("Now playing bass drum.")
                     playsound("bass-drum-hit.wav")
                 else:
