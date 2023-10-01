@@ -88,13 +88,14 @@ try:
         print("Press Ctrl+C to stop the recording")
         print("#" * 80)
 
-        rec = KaldiRecognizer(model, args.samplerate, '["bass", "snare", "drum", "hi", "hat", "start", "[unk]"]')
+        rec = KaldiRecognizer(model, args.samplerate, '["bass", "snare", "drum", "hi", "hat", "start", "clear", "[unk]"]')
         last_sorry_playback_time = 0
 
         sound_name = ""
         recording = False
         playback = False
         start_time = 0
+        i = 0
         time_list = []
 
         while True:
@@ -117,6 +118,9 @@ try:
                 elif (result.find("start") != -1):
                     recording = True
                     start_time = time.time()
+                elif (result.find("clear") != -1):
+                    recording = False
+                    time_list = []
                 elif sound_name == "":
                     # sound_name = ""
                     current_time = time.time()
@@ -128,23 +132,32 @@ try:
                 pass
                 # print(rec.PartialResult())
             if playback:
-                i = 0
-                time_list = sorted(time_list, key=lambda tup: tup[0]) # sort time_list by time (first entry)
-                while(time.time() - playback_time < 4 and i < len(time_list)):
-                    if (time.time() - playback_time >= time_list[i][0]):
-                        playsound(time_list[i][1], False)
-                        i = i + 1
-                playback = False
-            elif sound_name != "" and keyboard.is_pressed(' '):
-                if recording and time.time() - start_time < 4:
-                    time_list.append((time.time() - start_time, sound_name))
-                playsound(sound_name, False)
+                if (time.time() - playback_time > 4):
+                    # Loop recording
+                    playback_time = time.time()
+                    start_time = playback_time
+                    i = 0
+                    print("loop")
+                elif (i < len(time_list) and time.time() - playback_time >= time_list[i][0]):
+                    playsound(time_list[i][1], False)
+                    i = i + 1
             elif recording and time.time() - start_time > 4:
                 # play back
-                print("start playback")
-                recording = False
                 playback = True
                 playback_time = time.time()
+                print("start playback")
+                    
+            if sound_name != "" and keyboard.is_pressed(' '):
+                if recording and time.time() - start_time < 4:
+                    time_list.append((time.time() - start_time, sound_name))
+                    time_list = sorted(time_list, key=lambda tup: tup[0]) # sort time_list by time (first entry)
+                    print(time_list)
+                    if not playback:
+                        playsound(sound_name, False)
+                else:
+                    playsound(sound_name, False)
+                    
+
 
             if dump_fn is not None:
                 dump_fn.write(data)
