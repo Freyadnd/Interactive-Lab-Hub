@@ -70,8 +70,8 @@ sounds = {
     'hi-hat': AudioSegment.from_file('short-open-hi-hat.wav'),
     'snare-drum': AudioSegment.from_file('wide-snare-drum_B_minor.wav'),
     'bass-drum': AudioSegment.from_file('bass-drum-hit.wav'),
-    'hello': AudioSegment.from_file('.\Lab 3\speech-scripts\hello.mp3'),
-    'sorry': AudioSegment.from_file('.\Lab 3\speech-scripts\sorry.mp3')
+    'hello': AudioSegment.from_file('hello.mp3'),
+    'sorry': AudioSegment.from_file('sorry.mp3')
 }
 
 _play_with_simpleaudio(sounds['hello'])
