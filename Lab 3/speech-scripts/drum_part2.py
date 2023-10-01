@@ -129,8 +129,8 @@ try:
                 # print(rec.PartialResult())
             if playback:
                 i = 0
-                print("start playback")
-                while(time.time() - playback_time < 4):
+                time_list = sorted(time_list, key=lambda tup: tup[0]) # sort time_list by time (first entry)
+                while(time.time() - playback_time < 4 and i < len(time_list)):
                     if (time.time() - playback_time >= time_list[i][0]):
                         playsound(time_list[i][1], False)
                         i = i + 1
@@ -138,12 +138,13 @@ try:
             elif sound_name != "" and keyboard.is_pressed(' '):
                 if recording and time.time() - start_time < 4:
                     time_list.append((time.time() - start_time, sound_name))
-                elif recording:
-                    # play back
-                    recording = False
-                    playback = True
-                    playback_time = time.time()
                 playsound(sound_name, False)
+            elif recording and time.time() - start_time > 4:
+                # play back
+                print("start playback")
+                recording = False
+                playback = True
+                playback_time = time.time()
 
             if dump_fn is not None:
                 dump_fn.write(data)
