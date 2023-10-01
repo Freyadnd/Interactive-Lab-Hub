@@ -58,7 +58,7 @@ args = parser.parse_args(remaining)
 mp3_fp = BytesIO()
 tts = gTTS('Hello! I am a drum machine that can play hi hat, bass drum and snare drum sounds. ', lang='en')
 tts.save('hello.mp3')
-playsound('hello.mp3')
+# playsound('hello.mp3')
 
 tts = gTTS("Sorry, I don't recognize the instrument you are saying.", lang='en')
 tts.save('sorry.mp3')
@@ -85,9 +85,11 @@ try:
         print("Press Ctrl+C to stop the recording")
         print("#" * 80)
 
-        rec = KaldiRecognizer(model, args.samplerate)
+        rec = KaldiRecognizer(model, args.samplerate, '["bass", "snare", "drum", "hi", "hat", "[unk]"]')
+        last_sorry_playback_time = 0
         while True:
             data = q.get()
+            clear = False
             if rec.AcceptWaveform(data):
                 result = json.loads(rec.Result())["text"]
                 if (result == "hi hat"):
@@ -100,14 +102,18 @@ try:
                     print("Now playing bass drum.")
                     playsound("bass-drum-hit.wav")
                 else:
-                    playsound('sorry.mp3')
-                    continue
+                    current_time = time.time()
+                    if current_time - last_sorry_playback_time > 10:
+                        playsound('sorry.mp3', True)
+                    last_sorry_playback_time = current_time
                 print(result)
             else:
                 pass
                 # print(rec.PartialResult())
+            
             if dump_fn is not None:
                 dump_fn.write(data)
+            # time.sleep(1)
 
 except KeyboardInterrupt:
     print("\nDone")
