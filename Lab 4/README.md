@@ -270,6 +270,11 @@ Build a cardboard prototype of your design.
 
 **\*\*\*Document your rough prototype.\*\*\***
 
+We used the capacitive sensor to simulate different frets for users to press. Here s a photo of our minimum viable product:
+
+![mvp](mvp.jpg)
+
+[Video demo](https://drive.google.com/file/d/1FcWzyY7KeuJpChss-Oo8PTO-4VgiaUhi/view?usp=sharing)
 
 LAB PART 2
 
