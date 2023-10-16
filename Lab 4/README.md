@@ -256,8 +256,9 @@ The first two ideas corresponds to the shape of a radio. In both ideas the direc
 
 Questions:
     1. Which shape do our users prefer?
-    2. How to choose from the distance sensor and the capacitive sensor for simulating the fret?
-    3. Where should we put the pi and the cables? Our prototype does not need display so the pi can be hidden inside the box, but we might need to cut out some holes for the cables. 
+    2. How large should our prototype be?
+    3. How to choose from the distance sensor and the capacitive sensor for simulating the fret?
+    4. Where should we put the pi and the cables? Our prototype does not need display so the pi can be hidden inside the box, but we might need to cut out some holes for the cables. 
 
 To answer these questions, we need to test out both the capacitive sensor and the distance sensor and prototype the interaction. We also need to physically cut out some cardboard and present different shapes to some users to figure out which design is better. 
 
