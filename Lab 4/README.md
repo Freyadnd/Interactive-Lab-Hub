@@ -255,10 +255,12 @@ The first two ideas corresponds to the shape of a radio. In both ideas the direc
 **\*\*\*What are some things these sketches raise as questions? What do you need to physically prototype to understand how to answer those questions?\*\*\***
 
 Questions:
-    1. Which shape do our users prefer?
-    2. How large should our prototype be?
-    3. How to choose from the distance sensor and the capacitive sensor for simulating the fret?
-    4. Where should we put the pi and the cables? Our prototype does not need display so the pi can be hidden inside the box, but we might need to cut out some holes for the cables. 
+<ol>
+    <li> Which shape do our users prefer? </li>
+    <li> How large should our prototype be? </li>
+    <li> How to choose from the distance sensor and the capacitive sensor for simulating the fret? </li>
+    <li> Where should we put the pi and the cables? Our prototype does not need display so the pi can be hidden inside the box, but we might need to cut out some holes for the cables. </li>
+</ol>
 
 To answer these questions, we need to test out both the capacitive sensor and the distance sensor and prototype the interaction. We also need to physically cut out some cardboard and present different shapes to some users to figure out which design is better. 
 
@@ -268,9 +270,11 @@ To answer these questions, we need to test out both the capacitive sensor and th
 
 Build a cardboard prototype of your design.
 
+Since our idea has a focus on portability / size, we picked the third design with joystick and capacitive sensor. We used joystick instead of buttons because we thought using 4 buttons makes the interface too crowded. On the other hand, we also tested out the distance sensor, but it cannot work precisely for objects further than 7 cm away.
+
 **\*\*\*Document your rough prototype.\*\*\***
 
-We used the capacitive sensor to simulate different frets for users to press. Here s a photo of our minimum viable product:
+We used the capacitive sensor to simulate different frets for users to press. Here s a photo of our minimum viable product (our complete design is documented in part 2):
 
 ![mvp](mvp.jpg)
 
@@ -340,3 +344,34 @@ Document all the prototypes and iterations you have designed and worked on! Agai
 * "Looks like": shows how the device should look, feel, sit, weigh, etc.
 * "Works like": shows what the device can do
 * "Acts like": shows how a person would interact with the device
+
+We are playing the piano like an ukulele, which is a simplified ukulele with piano sounds from cardboard using 2 sensors: capacitive sensor and joystick. The joystick serves as 4 strings of the instrument and the capacitive sensors serve as 5 different intonations (frets) for each string.
+
+1. “Looks like”
+
+    We enclose the sensors, alligator clips and the joysticks into a small box made of cardboard. The user is able to hold it like a real ukulele. One hand will be on the right controlling the joystick, just like pressing a string on an ukulele. The other would be touching the conductive tape, similar to pressing a fret. Our prototype is portable and lightweight, just like an ukulele. 
+
+2. “Works like”
+
+    We coded the program (name of file) to use the above 2 sensors to play sound. There are 26 notes playable by an ukulele. We load a sound file for each of the 26 possible notes. Note that we load them into memory first; in earlier design we played the file and observed latency. By pre-loading, we avoid this latency but the program takes about 10s for loading before we can play.
+
+    Recall the 26 notes are:
+    G3, Ab3, A3, Bb3, B3, C4, Db4, D4, Eb4, E4, F4, Gb4, G4, Ab4, A4, Bb4, B4, C5, Db5, D5, Eb5, E5, F5, Gb5, G5, and Ab5.
+
+    In the program, the 4 string options map to specific indices in the above notes array (0, 5, 9, 14 respectively). When no fret is held, they play the sounds corresponding to the indices (represented by a dictionary). When a fret is held, we increment the index by the same number (a fret corresponds to a number). There are 12 frets possible but in practice since we have only 5 alligator clips we settle with a simplified version with only 5 frets (+1,+2,+3,+4,+5). Therefore, we can play all notes up to D5 (index 19 = 14 + 5), missing 6 last notes, which we think is sufficient for most simple songs.
+
+3. “Acts like”
+
+    The joystick gives us 4 options for 4 strings (up, down, left, right). When users move the joystick to any 4 positions, a note is played, but it requires users to move the joystick back to its default position before being able to play a new note. This resembles the action of “playing a string”. The string can not be played again until it goes back to the original position; after the players release the string.
+
+    The frets are controlled by a capacitive sensor connected with conductive tape. When the user touches one of the lines, the corresponding fret is active and the pitch is raised by a number of semitones accordingly. The tapes can be touched continuously without release, resembling the action of “holding the string”.
+
+    By controlling the joystick and touching one line of conductive tape, our prototype acts like an ukulele. 
+
+[Video demo](https://drive.google.com/file/d/1EEAPDwucPd1xCqGDg7ZH5l9JGiKff1TI/view?usp=drive_link)
+
+Photos:
+
+![Prototype Overview](photo_1.jpg)
+![Inside Structure](photo_2.jpg)
+![Whiteboard](photo_3.jpg)
