@@ -368,7 +368,7 @@ We are playing the piano like an ukulele, which is a simplified ukulele with pia
 
     By controlling the joystick and touching one line of conductive tape, our prototype acts like an ukulele. 
 
-[Video demo](https://drive.google.com/file/d/1EEAPDwucPd1xCqGDg7ZH5l9JGiKff1TI/view?usp=drive_link)
+[Video demo](https://drive.google.com/file/d/1-eicEowI_QwbFEQE6uqeBe42RfTx9uUs/view?usp=drive_link)
 
 Photos:
 
