@@ -203,6 +203,8 @@ Some questions that the sketches raise:
 
 **\*\*\*Pick one of these designs to prototype.\*\*\***
 
+We picked the portable piano idea. However, instead of having many buttons as keys, we modified the mechanism of playing notes to the one similar as playing a ukulele. The note played is determined by both the string and the fret pressed. 
+
 ### Part D
 ### Physical considerations for displaying information and housing parts
 
@@ -242,7 +244,22 @@ Think about how you want to present the information about what your sensor is se
  
 **\*\*\*Sketch 5 designs for how you would physically position your display and any buttons or knobs needed to interact with it.\*\*\***
 
-**\*\*\*What are some things these sketches raise as questions? What do you need to physically prototype to understand how to anwer those questions?\*\*\***
+![Design1](design_1.jpg)
+![Design2](design_2.jpg)
+![Design3](design_3.jpg)
+![Design4](design_4.jpg)
+![Design5](design_5.jpg)
+
+The first two ideas corresponds to the shape of a radio. In both ideas the direction of the joystick is used for determining which string is pressed. For the fret, we can either use buttons or a distance sensor. The third and forth ideas focus more on the portability of our prototype, and the last one tries to mimic the shape of a real ukulele. 
+
+**\*\*\*What are some things these sketches raise as questions? What do you need to physically prototype to understand how to answer those questions?\*\*\***
+
+Questions:
+    1. Which shape do our users prefer?
+    2. How to choose from the distance sensor and the capacitive sensor for simulating the fret?
+    3. Where should we put the pi and the cables? Our prototype does not need display so the pi can be hidden inside the box, but we might need to cut out some holes for the cables. 
+
+To answer these questions, we need to test out both the capacitive sensor and the distance sensor and prototype the interaction. We also need to physically cut out some cardboard and present different shapes to some users to figure out which design is better. 
 
 **\*\*\*Pick one of these display designs to integrate into your prototype.\*\*\***
 
