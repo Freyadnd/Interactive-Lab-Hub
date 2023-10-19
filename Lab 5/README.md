@@ -121,6 +121,8 @@ Next train your own model. Visit [TeachableMachines](https://teachablemachine.wi
 
 Include screenshots of your use of Teachable Machines, and write how you might use this to create your own classifier. Include what different affordances this method brings, compared to the OpenCV or MediaPipe options.
 
+[Teachable Machines Demo](https://drive.google.com/file/d/150dOQDbp3P3kZaYMGIjLEX3Q7znTEJNH/view?usp=sharing)
+
 #### (Optional) Legacy audio and computer vision observation approaches
 In an earlier version of this class students experimented with observing through audio cues. Find the material here:
 [Audio_optional/audio.md](Audio_optional/audio.md). 
