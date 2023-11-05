@@ -11,12 +11,16 @@
     // the link to your model provided by Teachable Machine export panel
     const URL = "./instrument_model/";
     let model, webcam, ctx, labelContainer, maxPredictions;
-    var track1 = new Audio('tracks/Violin-C12.mp3');
-    var track2 = new Audio('tracks/Acoustic Guitar-Ela M 260.mp3');
-    var track3 = new Audio('tracks/Mandolin-Ela M 251.mp3');
+    var track1_1 = new Audio('tracks/01_KickInside.mp3');
+    var track1_2 = new Audio('tracks/02_KickBeater.mp3');
+    var track1_3 = new Audio('tracks/03_Snare.mp3');
+    var track1_4 = new Audio('tracks/04_Overheads.mp3');
+    var track2 = new Audio('tracks/05_Bass.mp3');
+    var track3 = new Audio('tracks/06_Piano.mp3');
     var pred = {};
     var time = 0;
     var p = "background";
+    var speed = 0.01;
 
     async function init() {
         const modelURL = URL + "model.json";
@@ -53,50 +57,50 @@
         await predict();
         p = getPred();
         if (p == "start them all"){
-            track1.play();
+            track1_1.volume = 0.5;
+            track1_2.volume = 0.5;
+            track1_3.volume = 0.5;
+            track1_4.volume = 0.5;
+            track2.volume = 0.5;
+            track3.volume = 0.5;
+            track1_1.play();
+            track1_2.play();
+            track1_3.play();
+            track1_4.play();
             track2.play();
             track3.play();
         } else if (p == "stop them all"){
-            track1.pause();
+            track1_1.pause();
+            track1_2.pause();
+            track1_3.pause();
+            track1_4.pause();
             track2.pause();
             track3.pause();
-            global_time = Math.max(track1.currentTime, track2.currentTime, track3.currentTime);
+            track1_1.currentTime = 0;
+            track1_2.currentTime = 0;
+            track1_3.currentTime = 0;
+            track1_4.currentTime = 0;
+            track2.currentTime = 0;
+            track3.currentTime = 0;
         } else if (p == "start instr 1"){
-            if (track1.paused || !track1.currentTime){
-                track1.currentTime = global_time;
-                // console.log("current: " + track1.currentTime);
-                // console.log("global: " + global_time);
-                track1.play();
-            }
+            track1_1.volume = clamp(track1_1.volume + speed, 0, 1);
+            track1_2.volume = clamp(track1_2.volume + speed, 0, 1);
+            track1_3.volume = clamp(track1_3.volume + speed, 0, 1);
+            track1_4.volume = clamp(track1_4.volume + speed, 0, 1);
         } else if (p == "stop instr 1"){
-            if (!track1.paused){
-                track1.pause();
-                global_time = Math.max(global_time, track1.currentTime);
-                // console.log(track1.currentTime);
-            }
-
+            track1_1.volume = clamp(track1_1.volume - speed, 0, 1);
+            track1_2.volume = clamp(track1_2.volume - speed, 0, 1);
+            track1_3.volume = clamp(track1_3.volume - speed, 0, 1);
+            track1_4.volume = clamp(track1_4.volume - speed, 0, 1);
         } else if (p == "start instr 2"){
-            if (track2.paused || !track2.currentTime){
-                track2.currentTime = global_time;
-                track2.play();
-            }
+            track2.volume = clamp(track2.volume + speed, 0, 1);
         } else if (p == "stop instr 2"){
-            if (!track2.paused){
-                track2.pause();
-                global_time = Math.max(global_time, track2.currentTime);
-            }
+            track2.volume = clamp(track2.volume - speed, 0, 1);
         } else if (p == "start instr 3"){
-            if (track3.paused || !track3.currentTime){
-                track3.currentTime = global_time;
-                track3.play();
-            }
+            track3.volume = clamp(track3.volume + speed, 0, 1);
         } else if (p == "stop instr 3"){
-            if (!track3.paused){
-                track3.pause();
-                global_time = Math.max(global_time, track3.currentTime);
-            }
+            track3.volume = clamp(track3.volume - speed, 0, 1);
         }
-        //time = Math.max(track1.currentTime, track2.currentTime, track3.currentTime);
         window.requestAnimationFrame(loop);
     }
 
@@ -139,7 +143,8 @@
         return "background";
     }
 
-    // track1.oncanplay = function(){
-    //     track1.currentTime = global_time;
-    // }
+    function clamp(val, min, max){
+        return Math.max(Math.min(val, max), min);
+    }
+
 </script>
