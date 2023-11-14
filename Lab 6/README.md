@@ -1,6 +1,8 @@
 # Little Interactions Everywhere
 
-**NAMES OF COLLABORATORS HERE**
++ Tingrui（Freya) Zhang - tz428
++ Khiem Pham - dpk45
++ Sissel Sun - rs923
 
 ## Prep
 
@@ -165,7 +167,7 @@ By running the script, wou will find the two squares on the display. Half is sho
 (A message from the previous TA, Ilan: I was not super careful with handling the loop so you may need to press more than once if the timing isn't quite right. Also, I haven't load-tested it so things might just immediately break when everyone pushes the button at once.)
 
 **\*\*\*Can you set up the script that can read the color anyone else publish and display it on your screen?\*\*\***
-
+![Color](color.png)
 
 ### Part E
 ### Make it your own
@@ -174,13 +176,19 @@ Find at least one class (more are okay) partner, and design a distributed applic
 
 **\*\*\*1. Explain your design\*\*\*** For example, if you made a remote controlled banana piano, explain why anyone would want such a thing.
 
-
+We create a remote controlled camera system. Everyone who subscribes to our MQTT topic can control the camera i.e. take a picture, the camera being in a remote location. This has uses in home monitoring systems, where a homeowner wants to see who is currently in his house or what is happening in his house at the moment he is at work. However, our main goal is to allow everyone to control the camera: this is similar to an audience controlling what a livestreamer does.
 
 **\*\*\*2. Diagram the architecture of the system.\*\*\*** Be clear to document where input, output and computation occur, and label all parts and connections. For example, where is the banana, who is the banana player, where does the sound get played, and who is listening to the banana music?
+
+The pi with the camera is at a fixed location e.g. at a house, looking at Queens Bridge, at a busy NYC corner… The controller can be in any remote location and with access to the topic. The controller sends a message to the MQTT server, and the pi takes the picture.
 
 ![Diagram](diagram.png)
 
 **\*\*\*3. Build a working prototype of the system.\*\*\*** Do think about the user interface: if someone encountered these bananas somewhere in the wild, would they know how to interact with them? Should they know what to expect?
+
+Our cameras are meant to be left alone 🙂. Practically, we hide them from view, so that no stranger will mess with them.
+
+Our working prototype is a first step towards EarthCam, where users can view the streaming of the camera and record or take a picture of their own choice. However, images and videos are too large to send over MQTT, which is a setback we plan to solve in the future.
 
 **\*\*\*4. Document the working prototype in use.\*\*\*** It may be helpful to record a Zoom session where you should the input in one location clearly causing response in another location.
 
