@@ -13,27 +13,36 @@ neokey = NeoKey1x4(i2c_bus, addr=0x30)
 print("Adafruit NeoKey simple test")
 
 # Check each button, if pressed, light up the matching neopixel!
+last_pressed = None
 while True:
     if neokey[0]:
-        print("Button A")
+        if not last_pressed == 0:
+            print("Button A")
         neokey.pixels[0] = 0xFF0000
+        last_pressed = 0
     else:
         neokey.pixels[0] = 0x0
 
     if neokey[1]:
-        print("Button B")
+        if not last_pressed == 1:
+            print("Button B")
         neokey.pixels[1] = 0xFFFF00
+        last_pressed = 1
     else:
         neokey.pixels[1] = 0x0
 
     if neokey[2]:
-        print("Button C")
+        if not last_pressed == 2:
+            print("Button C")
+        last_pressed = 2
         neokey.pixels[2] = 0x00FF00
     else:
         neokey.pixels[2] = 0x0
 
     if neokey[3]:
-        print("Button D")
+        if not last_pressed == 3:
+            print("Button D")
+        last_pressed = 3
         neokey.pixels[3] = 0x00FFFF
     else:
         neokey.pixels[3] = 0x0
