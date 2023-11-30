@@ -22,10 +22,10 @@ if seesaw_product != 4991:
 seesaw.pin_mode(24, seesaw.INPUT_PULLUP)
 button = digitalio.DigitalIO(seesaw, 24)
 
-beats = ["hi-hat.wav", "bass-drum.wav", "snare-drum.wav", "snare-drum.wav"]
+beats = ["hi-hat.wav", "Acoustic Sticks 01.wav", "snare-drum.wav", "Acoustic Snare 29.wav"]
 
 def play_beat(index):
-    instance = vlc.Instance('--aout=alsa')
+    instance = vlc.Instance()
     p = instance.media_player_new()
     m = instance.media_new(beats[index]) 
     p.set_media(m)
@@ -78,38 +78,30 @@ def run_example():
             print("Button released")
 
         if neokey[0]:
-            if not last_pressed == 0:
-                print("Button A")
-            neokey.pixels[0] = 0xFF0000
             play_beat(0)
-            last_pressed = 0
+            neokey.pixels[0] = 0xFF0000
+            time.sleep(0.2)
         else:
             neokey.pixels[0] = 0x0
 
         if neokey[1]:
-            if not last_pressed == 1:
-                print("Button B")
-            neokey.pixels[1] = 0xFFFF00
             play_beat(1)
-            last_pressed = 1
+            neokey.pixels[1] = 0xFFFF00
+            time.sleep(0.2)
         else:
             neokey.pixels[1] = 0x0
 
         if neokey[2]:
-            if not last_pressed == 2:
-                print("Button C")
-            last_pressed = 2
             play_beat(2)
             neokey.pixels[2] = 0x00FF00
+            time.sleep(0.2)
         else:
             neokey.pixels[2] = 0x0
 
         if neokey[3]:
-            if not last_pressed == 3:
-                print("Button D")
-            last_pressed = 3
             play_beat(3)
             neokey.pixels[3] = 0x00FFFF
+            time.sleep(0.2)
         else:
             neokey.pixels[3] = 0x0
         
