@@ -225,10 +225,10 @@ while run:
 
     # print(time.time() - time_st)
 
-    # try:
-    #     play_keys()
-    # except:
-    #     pass
+    try:
+        play_keys()
+    except:
+        pass
     rotary()
     reset()
 
