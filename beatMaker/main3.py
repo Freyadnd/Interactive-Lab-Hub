@@ -223,7 +223,7 @@ while run:
         dance()
         beat_changed = False
 
-    print(time.time() - time_st)
+    # print(time.time() - time_st)
 
     # try:
     #     play_keys()
@@ -232,7 +232,7 @@ while run:
     rotary()
     reset()
 
-    print(time.time() - time_st)
+    # print(time.time() - time_st)
 
     # beat_length = 3600 // bpm
     # print(beat_length)
@@ -249,7 +249,7 @@ while run:
                 active_beat = 0
             beat_changed = True
 
-    print(time.time() - time_st)
+    # print(time.time() - time_st)
     print()
 
 pygame.quit()
