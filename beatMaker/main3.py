@@ -9,6 +9,7 @@ import board
 from adafruit_seesaw import seesaw, rotaryio, digitalio
 import qwiic_button
 from adafruit_servokit import ServoKit
+import sys
 
 kit = ServoKit(channels=16)
 servos = 2
@@ -250,7 +251,9 @@ while run:
         # print(time.time() - time_st)
         print()
     except (KeyboardInterrupt, SystemExit) as exErr:
+        run = False
         pygame.quit()
+        sys.exit(0)
     except:
         pass
     
