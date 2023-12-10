@@ -216,40 +216,41 @@ run = True
 # track.set_volume(0.5)
 
 while run:
-    time_st = time.time()
-    timer.tick(fps)
-    if beat_changed:
-        play_notes()
-        dance()
-        beat_changed = False
-
-    # print(time.time() - time_st)
-
     try:
+        time_st = time.time()
+        timer.tick(fps)
+        if beat_changed:
+            play_notes()
+            dance()
+            beat_changed = False
+
+        # print(time.time() - time_st)
+
         play_keys()
+        rotary()
+        reset()
+
+        # print(time.time() - time_st)
+
+        # beat_length = 3600 // bpm
+        # print(beat_length)
+
+        if playing:
+            # print(active_length, beat_length, active_beat, beat_changed)
+            if active_length < beat_length: # measure time for a beat to play. This means the current beat is still playing.
+                active_length += 1
+            else:
+                active_length = 0
+                if active_beat < nb_beats - 1:
+                    active_beat += 1
+                else:
+                    active_beat = 0
+                beat_changed = True
+
+        # print(time.time() - time_st)
+        print()
+    except (KeyboardInterrupt, SystemExit) as exErr:
+        pygame.quit()
     except:
         pass
-    rotary()
-    reset()
-
-    # print(time.time() - time_st)
-
-    # beat_length = 3600 // bpm
-    # print(beat_length)
-
-    if playing:
-        # print(active_length, beat_length, active_beat, beat_changed)
-        if active_length < beat_length: # measure time for a beat to play. This means the current beat is still playing.
-            active_length += 1
-        else:
-            active_length = 0
-            if active_beat < nb_beats - 1:
-                active_beat += 1
-            else:
-                active_beat = 0
-            beat_changed = True
-
-    # print(time.time() - time_st)
-    print()
-
-pygame.quit()
+    
