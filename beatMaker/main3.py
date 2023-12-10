@@ -19,7 +19,7 @@ for i in range(servos):
 ################################################################
 
 
-reset_button = qwiic_button.QwiicButton()
+reset_button = qwiic_button.QwiicButton(address=0x6e)
 
 ################################################################
 
