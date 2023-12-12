@@ -82,8 +82,8 @@ tom = mixer.Sound("sounds\kit2\\tom.wav")
 beats = [
     mixer.Sound(f'sounds/{beat_name}.mp3') 
     for beat_name in ['hi hat', 'snare', 
-                      'kick', 'crash', 
-                      'clap', 
+                      'Acoustic Kick 29', 
+                      'crash', 'clap', 
                     #   'tom',
                         'Acoustic Sticks 01',
                       'Acoustic Cowbell 01',
