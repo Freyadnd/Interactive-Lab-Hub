@@ -54,10 +54,10 @@ keys = [
     (neokey2, 1, colorwheel(160)),
     (neokey2, 2, colorwheel(192)),
     (neokey2, 3, colorwheel(224)),
-    (neokey3, 0, colorwheel(16)),
-    (neokey3, 1, colorwheel(32)),
-    (neokey3, 2, colorwheel(48)),
-    # (neokey3, 3, colorwheel(64)),
+    (neokey3, 0, colorwheel(256)),
+    (neokey3, 1, colorwheel(288)),
+    (neokey3, 2, colorwheel(320)),
+    # (neokey3, 3, colorwheel(352)),
 ]
 
 pressed_keys = [-1] * len(keys)
@@ -116,7 +116,7 @@ active_beat = 0
 
 pygame.mixer.set_num_channels(instruments * 3)
 
-cur_angle = 0
+cur_angle = 45
 
 def dance():
     for i in range(len(clicked)):
