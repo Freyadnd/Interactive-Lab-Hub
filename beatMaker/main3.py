@@ -85,7 +85,7 @@ beats = [
                       'Acoustic Kick 29', 
                       'crash', 'clap', 
                     #   'tom',
-                        'Acoustic Sticks 01',
+                    'Acoustic Sticks 01',
                       'Acoustic Cowbell 01',
                       'Acoustic Crash 01',
                       'Acoustic Hat Bell 01',
@@ -121,9 +121,6 @@ pygame.mixer.set_num_channels(instruments * 3)
 cur_angle = 45
 
 def dance():
-    if servo_button.is_button_pressed() and servo_button_time - time.time() > 0.5:
-        servo_button_time = time.time()
-        servo_on = not servo_on
     if servo_on:
         for i in range(len(clicked)):
             if clicked[i][active_beat] == 1 and active_list[i] == 1:
@@ -241,6 +238,11 @@ while run:
 
         # beat_length = 3600 // bpm
         # print(beat_length)
+        if servo_button.is_button_pressed():
+            pressed_time = time.time()
+            if  pressed_time - servo_button_time > 0.5:
+                servo_button_time = pressed_time
+                servo_on = not servo_on
 
         if playing:
             # print(active_length, beat_length, active_beat, beat_changed)
