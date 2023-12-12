@@ -18,7 +18,7 @@ for i in range(servos):
 
 ################################################################
 
-
+servo_button = qwiic_button.QwiicButton()
 reset_button = qwiic_button.QwiicButton(address=0x6e)
 
 ################################################################
@@ -99,6 +99,7 @@ beats = [
 track = mixer.Sound('sounds/springtime.mp3')
 
 beat_changed = True
+servo_on = True
 timer = pygame.time.Clock()
 fps = 60
 nb_beats = 8
@@ -113,20 +114,25 @@ active_list = [1 for _ in range(instruments)]
 
 active_length = 0
 active_beat = 0
+servo_button_time = time.time()
 
 pygame.mixer.set_num_channels(instruments * 3)
 
 cur_angle = 45
 
 def dance():
-    for i in range(len(clicked)):
-        if clicked[i][active_beat] == 1 and active_list[i] == 1:
-            global cur_angle
-            cur_angle = (180 - cur_angle)
-            for i in range(servos):
-                # Set the servo to 180 degree position
-                kit.servo[i].angle = cur_angle
-            break
+    if servo_button.is_button_pressed() and servo_button_time - time.time() > 0.5:
+        servo_button_time = time.time()
+        servo_on = not servo_on
+    if servo_on:
+        for i in range(len(clicked)):
+            if clicked[i][active_beat] == 1 and active_list[i] == 1:
+                global cur_angle
+                cur_angle = (180 - cur_angle)
+                for i in range(servos):
+                    # Set the servo to 180 degree position
+                    kit.servo[i].angle = cur_angle
+                break
 
 
     # for i in range(servos):
