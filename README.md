@@ -15,7 +15,7 @@ Please place links here to the README.md's for each of your labs here:
 
 [Lab 6. Little Interactions Everywhere](Lab%206/)
 
-[Final Project](https://github.com/srjsissel/Interactive-Lab-Hub/tree/Fall2023/Final%20Project)
+[Final Project](Final%20Project/)
 
 [Online Repository](https://github.com/srjsissel/Interactive-Lab-Hub/)
 
