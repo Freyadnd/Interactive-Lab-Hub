@@ -4,11 +4,6 @@
 + Sissel Sun - rs923
 + Tingrui（Freya) Zhang - tz428
 
-## Functioning Project
-
-![img](img/4.jpg)
-
-
 ## **Ideation**
 
 Our project introduces a unique music toolkit designed for individuals new to DJing. It's a user-friendly platform that simplifies music creation, making it accessible and enjoyable for beginners. 
@@ -16,6 +11,32 @@ Our project introduces a unique music toolkit designed for individuals new to DJ
 The centerpiece is the DJ Box, which allows users to add various drum beats to a track. The setup includes dynamic lights on the keyboard that respond to the beats, along with two small figurines that move in sync with the beat, creating a playful and engaging environment for music composition.
 
 <img src="img/1.jpg" width="50%" height="50%">
+
+# **Project Timeline**
+  - Nov 14 - Project Planning
+  - Nov 21 - Functional checkoff: Implement basic functions of looping, instrument playing and volume control. Try out music visualization.
+  - Nov 30 - Fully functioning demo: Added servo control and resetting beats
+  - Dec 5 - Design and laser cut the case
+  - Dec 12 - Presentation
+  - Dec 15 - Work on documentations
+
+## **Parts Involved**
+- Raspberry Pi
+- 1x4 Neokeys
+- Rotary encoder
+- Buttons
+- Servos
+- webcamera (as speaker)
+- Cardboard (for the laser-cut frame)
+- Acrylic
+
+## **Fallback Plan**
+
+One of the challenges we have is trying to visualize the user-created beats by generative abstract paintings. We will test out the visualization mechanism first (before Nov 21) and if the visualization is not intuitive, we will consider switching to LEDs. 
+
+## **Functioning Project**
+
+![img](img/4.jpg)
 
 ## **Features**
 - **Control Interface:** Utilizing 12 keys to control multiple instruments. We used sound samples from [Wavbvkery](https://wavbvkery.com/acoustic-drum-samples/) that include:
@@ -59,15 +80,6 @@ The centerpiece is the DJ Box, which allows users to add various drum beats to a
 
   <img src="img/2.jpg" width="50%" height="50%">
 
-## **Parts Involved**
-- Raspberry Pi
-- 1x4 Neokeys
-- Rotary encoder
-- Buttons
-- Servos
-- webcamera (as speaker)
-- Cardboard (for the laser-cut frame)
-- Acrylic
 
 ## Code
 
