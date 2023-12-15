@@ -54,9 +54,9 @@ keys = [
     (neokey2, 1, colorwheel(160)),
     (neokey2, 2, colorwheel(192)),
     (neokey2, 3, colorwheel(224)),
-    (neokey3, 0, colorwheel(256)),
-    (neokey3, 1, colorwheel(288)),
-    (neokey3, 2, colorwheel(320)),
+    (neokey3, 0, colorwheel(0)),
+    (neokey3, 1, colorwheel(32)),
+    (neokey3, 2, colorwheel(64)),
     # (neokey3, 3, colorwheel(352)),
 ]
 
@@ -116,6 +116,9 @@ active_length = 0
 active_beat = 0
 servo_button_time = time.time()
 
+beat_offset = 0
+volume_offset = 0
+
 pygame.mixer.set_num_channels(instruments * 3)
 
 cur_angle = 45
@@ -158,6 +161,10 @@ def rotary():
     if not rotary_button.value and not rotary_button_held:
         rotary_button_held = True
         rotary_mode = 1 - rotary_mode
+        # if rotary_mode == 1:
+        #     beat_offset = rotary_button.value
+        # else:
+        #     volume_offset = rotary_button.value
         print("Button pressed")
 
     if rotary_button.value and rotary_button_held:
@@ -165,9 +172,13 @@ def rotary():
 
     if rotary_mode == 0:
         position = -encoder.position
+        # if position > 10:
+        #     volume_offset = position - 10
+        # elif position < -10:
+        #     volume_offset = position + 10
         position = min(max(-10, position), 10)
         # bpm = max(0.1, 240 * 8 + (position - initial_position) * 50)
-        volume = initial_volume + position / 20
+        volume = initial_volume + (position - volume_offset) / 20
         for beat in beats:
             beat.set_volume(volume)
         # track.set_volume(volume)
@@ -176,7 +187,7 @@ def rotary():
 
     if rotary_mode == 1:
         position = -encoder.position
-        position = min(max(1, position), 10)
+        position = min(max(1, position - beat_offset), 10)
         # bpm = max(0.1, 240 * 8 + (position - initial_position) * 50)
         beat_length = position
         print('set beat length to ', beat_length)
