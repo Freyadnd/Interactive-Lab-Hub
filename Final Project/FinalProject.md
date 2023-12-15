@@ -4,6 +4,8 @@
 + Sissel Sun - rs923
 + Tingrui（Freya) Zhang - tz428
 
+## Functioning Project
+
 ![img](img/4.jpg)
 
 
@@ -11,7 +13,7 @@
 
 Our project introduces a unique music toolkit designed for individuals new to DJing. It's a user-friendly platform that simplifies music creation, making it accessible and enjoyable for beginners. 
 
-The centerpiece is the DJ Box, which allows users to add various drum beats to a track. The setup includes dynamic lights on the keyboard that respond to the beats, along with two small figurines that move in sync with the beat, creating a playful and engaging environment for music compositio.
+The centerpiece is the DJ Box, which allows users to add various drum beats to a track. The setup includes dynamic lights on the keyboard that respond to the beats, along with two small figurines that move in sync with the beat, creating a playful and engaging environment for music composition.
 
 <img src="img/1.jpg" width="50%" height="50%">
 
@@ -66,6 +68,10 @@ The centerpiece is the DJ Box, which allows users to add various drum beats to a
 - webcamera (as speaker)
 - Cardboard (for the laser-cut frame)
 - Acrylic
+
+## Code
+
+See [main.py](BeatMaker/main.py)
 
 <img src="img/3.jpg" width="50%" height="50%">
 
