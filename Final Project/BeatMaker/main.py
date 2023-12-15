@@ -51,16 +51,16 @@ neokey3 = NeoKey1x4(board.I2C(), addr=0x32)
 
 keys = [
     (neokey1, 0, colorwheel(0)),
-    (neokey1, 1, colorwheel(32)),
-    (neokey1, 2, colorwheel(64)),
-    (neokey1, 3, colorwheel(96)),
-    (neokey2, 0, colorwheel(128)),
-    (neokey2, 1, colorwheel(160)),
-    (neokey2, 2, colorwheel(192)),
-    (neokey2, 3, colorwheel(224)),
-    (neokey3, 0, colorwheel(0)),
-    (neokey3, 1, colorwheel(32)),
-    (neokey3, 2, colorwheel(64)),
+    (neokey1, 1, colorwheel(23)),
+    (neokey1, 2, colorwheel(46)),
+    (neokey1, 3, colorwheel(69)),
+    (neokey2, 0, colorwheel(92)),
+    (neokey2, 1, colorwheel(115)),
+    (neokey2, 2, colorwheel(138)),
+    (neokey2, 3, colorwheel(161)),
+    (neokey3, 0, colorwheel(184)),
+    (neokey3, 1, colorwheel(207)),
+    (neokey3, 2, colorwheel(230)),
     # (neokey3, 3, colorwheel(352)),
 ]
 
