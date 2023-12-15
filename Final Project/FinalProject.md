@@ -67,7 +67,7 @@ One of the challenges we have is trying to visualize the user-created beats by g
 
   <img src="img/5.jpg" width="50%" height="50%">
 
-  [Demo Video](img/demo_1.mp4)
+  [Demo Video](https://drive.google.com/file/d/1H5mfBrFUMt4cfQeEVJ59d92vFebw8lh6/view?usp=sharing)
 
 4. Allocated components' positions and designed the case for laser cutting. We used [MakerCase](https://en.makercase.com/#/basicbox) to help us prototype the case. See [lasercut](lasercut/) for design file iterations. The final files are [board1_new](lasercut/board1_new.pdf), [board2_new](lasercut/board2_new.pdf) and [board_combined](lasercut/board_combined.pdf).
 
