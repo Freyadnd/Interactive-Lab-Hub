@@ -59,11 +59,12 @@ The centerpiece is the DJ Box, which allows users to add various drum beats to a
 
 ## **Parts Involved**
 - Raspberry Pi
-- Alligator clips
+- 1x4 Neokeys
+- Rotary encoder
 - Buttons
-- Servo
+- Servos
 - webcamera (as speaker)
-- Plywood (for the laser-cut frame)
+- Cardboard (for the laser-cut frame)
 - Acrylic
 
 <img src="img/3.jpg" width="50%" height="50%">
